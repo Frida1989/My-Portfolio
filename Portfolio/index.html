@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Farideh Pakdaman — Frontend & UX/UI</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="index.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <nav class="nav container">
+        <a class="logo" href="#top" aria-label="Home">
+          <span class="logo__mark"></span>
+          <span class="logo__text">Frida's Portfolio</span>
+        </a>
+
+        <button
+          class="nav__toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          type="button"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav__links" data-nav>
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <!-- Open resume in modal -->
+          <a href="#" id="openResume" aria-controls="resume-modal">Resume</a>
+          <a class="btn btn--small" href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top">
+      <!-- Hero -->
+      <section class="hero container">
+        <div class="hero__content">
+          <p class="eyebrow">Frontend Developer • UX/UI Designer</p>
+          <h1>
+            Designing meaningful digital experiences
+            <br />
+            <span class="accent">from concept to code.</span>
+          </h1>
+          <p class="lead">
+            I'm a Frontend Developer & UX/UI Designer studying at Nackademin.
+            With a background in architecture and visual design, I create clean,
+            user-centered interfaces and build them with modern frontend tools.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn" href="#projects">View Projects</a>
+            <a class="btn btn--ghost" href="#contact">Let's talk</a>
+          </div>
+
+          <div class="hero__meta">
+            <a
+              href="https://www.linkedin.com/in/farideh-pakdaman/"
+              aria-label="LinkedIn"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+
+            <span class="dot">•</span>
+            <a
+              href="mailto:farideh.pakdaman@yh.nackademin.se"
+              aria-label="Email"
+              >Email</a
+            >
+          </div>
+        </div>
+
+        <div class="hero__card">
+          <div class="card case-node case-node--overview">
+            <div class="card__top">
+              <p class="card__label">Currently</p>
+              <p class="card__value">Open to LIA / Internship</p>
+            </div>
+            <div class="card__body">
+              <p class="muted">
+                Interested in UX/UI, web design, and frontend development. Based
+                in Stockholm, Sweden.
+              </p>
+              <div class="chips">
+                <span class="chip">Figma</span>
+                <span class="chip">HTML/CSS</span>
+                <span class="chip">JavaScript</span>
+                <span class="chip">React</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects (only Frida Studio) -->
+      <section id="projects" class="section container">
+        <div class="section__head">
+          <h2>Selected Projects</h2>
+          <p class="muted">Case study: Frida Studio (service website).</p>
+        </div>
+
+        <div class="grid">
+          <!-- Frida Studio -->
+          <article class="project">
+            <div class="project__thumb" aria-hidden="true">
+              <img src="logoo.jpeg" alt="Frida Studio logo" />
+            </div>
+            <div class="project__body">
+              <h3>Frida Studio — Service Website</h3>
+              <p class="muted">
+                UX-ledd service-sajt för inredning & köksdesign med tydlig CTA
+                och trust signals.
+              </p>
+              <div class="project__tags">
+                <span class="tag">UX</span>
+                <span class="tag">UI</span>
+                <span class="tag">HTML/CSS</span>
+              </div>
+              <a class="project__link" href="#case-frida">Read case study →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Case Study — Frida Studio -->
+      <section id="case-frida" class="section container">
+        <div class="section__head">
+          <h2>Case Study — Frida Studio</h2>
+          <p class="muted">
+            Service website for a Scandinavian interior & kitchen design studio.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div>
+            <div class="card">
+              <h3>Overview</h3>
+              <p class="muted">
+                A clean service website focused on trust, clarity, and
+                conversion.
+              </p>
+
+              <div class="chips">
+                <span class="chip"
+                  ><strong>Role:</strong> UX/UI + Frontend</span
+                >
+                <span class="chip"
+                  ><strong>Tools:</strong> Figma, HTML/CSS, JS</span
+                >
+                <span class="chip"
+                  ><strong>Goal:</strong> Increase consultation bookings</span
+                >
+              </div>
+            </div>
+
+            <div
+              class="card case-node case-node--problem"
+              style="margin-top: 1rem"
+            >
+              <h3>Problem</h3>
+              <p class="muted">
+                Users feel overwhelmed when choosing design services. The site
+                needed clearer services, stronger trust signals, and a simple
+                path to contact.
+              </p>
+            </div>
+
+            <div
+              class="card case-node case-node--process"
+              style="margin-top: 1rem"
+            >
+              <h3>Process</h3>
+              <div class="bullets">
+                <div class="bullet">
+                  <span class="bullet__dot"></span>
+                  <p>
+                    <strong>User intent:</strong> Identify urgency and questions
+                    before booking.
+                  </p>
+                </div>
+                <div class="bullet">
+                  <span class="bullet__dot"></span>
+                  <p>
+                    <strong>Information hierarchy:</strong> Services → proof →
+                    CTA, in that order.
+                  </p>
+                </div>
+                <div class="bullet">
+                  <span class="bullet__dot"></span>
+                  <p>
+                    <strong>Iteration:</strong> Wireframes → UI → small copy
+                    improvements.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="card case-node case-node--solution"
+              style="margin-top: 1rem"
+            >
+              <h3>Solution</h3>
+              <ul class="list">
+                <li>
+                  <span>Trust</span
+                  ><span>Experience + testimonials + portfolio proof</span>
+                </li>
+                <li>
+                  <span>Clarity</span
+                  ><span>Clear services with short benefits</span>
+                </li>
+                <li>
+                  <span>Conversion</span
+                  ><span>Strong CTA: “Book a consultation”</span>
+                </li>
+              </ul>
+            </div>
+
+            <div
+              class="card case-node case-node--artifacts"
+              style="margin-top: 1rem"
+            >
+              <h3>Artifacts</h3>
+              <p class="muted">Design artifacts available for review:</p>
+              <ul class="list">
+                <li>
+                  <span>Storyboard</span
+                  ><span>Shows user scenarios and flow</span>
+                </li>
+                <li>
+                  <span>Wireframe</span
+                  ><span>Low-fidelity layout of key pages</span>
+                </li>
+                <li>
+                  <span>Mockup</span><span>High-fidelity UI screenshots</span>
+                </li>
+                <li>
+                  <span>Site map</span
+                  ><span>Information architecture overview</span>
+                </li>
+              </ul>
+
+              <!-- Thumbnails gallery: click to open lightbox -->
+              <div class="artifacts-gallery" aria-hidden="false">
+                <button
+                  class="artifact-thumb"
+                  type="button"
+                  data-img="Persona.jpg"
+                  aria-label="Open Persona"
+                >
+                  <img src="Persona.jpg" alt="Persona" />
+                </button>
+                <button
+                  class="artifact-thumb"
+                  type="button"
+                  data-img="Client%20journey.jpg"
+                  aria-label="Open Client journey"
+                >
+                  <img src="Client%20journey.jpg" alt="Client journey" />
+                </button>
+
+                <button
+                  class="artifact-thumb"
+                  type="button"
+                  data-img="Story%20Board.jpg"
+                  aria-label="Open Story Board"
+                >
+                  <img src="Story%20Board.jpg" alt="Story Board" />
+                </button>
+                <button
+                  class="artifact-thumb"
+                  type="button"
+                  data-img="Site%20structure.jpg"
+                  aria-label="Open Site structure"
+                >
+                  <img src="Site%20structure.jpg" alt="Site structure" />
+                </button>
+                <button
+                  class="artifact-thumb"
+                  type="button"
+                  data-img="Responsive%20Design.jpg"
+                  aria-label="Open Responsive Design"
+                >
+                  <img src="Responsive%20Design.jpg" alt="Responsive design" />
+                </button>
+
+                <button
+                  class="artifact-thumb"
+                  type="button"
+                  data-img="Design%20System.jpg"
+                  aria-label="Open Design System"
+                >
+                  <img src="Design%20System.jpg" alt="Design system" />
+                </button>
+                <button
+                  class="artifact-thumb"
+                  type="button"
+                  data-img="UI%20component.jpg"
+                  aria-label="Open UI component"
+                >
+                  <img src="UI%20component.jpg" alt="UI component" />
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="card case-node case-node--result"
+              style="margin-top: 1rem"
+            >
+              <h3>Result & Learnings</h3>
+              <p class="muted">
+                The site communicates value faster and guides users to contact
+                with less friction. Biggest learning: clear hierarchy + proof
+                beats long text.
+              </p>
+            </div>
+          </div>
+
+          <aside class="aside">
+            <div class="card">
+              <h3>Links</h3>
+              <ul class="list">
+                <li>
+                  <span>GitHub</span
+                  ><span
+                    ><a
+                      href="https://github.com/Frida1989"
+                      target="_blank"
+                      rel="noopener"
+                      >Frida1989 / FridaStudio</a
+                    ></span
+                  >
+                </li>
+              </ul>
+              <a class="btn btn--ghost btn--full" href="#contact"
+                >Contact about this project</a
+              >
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- About -->
+      <div class="bg-aurora" aria-hidden="true"></div>
+      <section id="about" class="section container">
+        <div class="two-col">
+          <div>
+            <h2>About</h2>
+            <p class="lead">
+              I combine design thinking with frontend execution to create calm,
+              usable, and visually balanced digital products.
+            </p>
+            <p class="muted">
+              My architecture background gives me a strong sense of structure,
+              layout, and user flow. I enjoy building interfaces that feel
+              simple, intentional, and accessible.
+            </p>
+
+            <div class="bullets">
+              <div class="bullet">
+                <span class="bullet__dot"></span>
+                <p>
+                  <strong>Strength:</strong> Turning complex ideas into clean
+                  UI.
+                </p>
+              </div>
+              <div class="bullet">
+                <span class="bullet__dot"></span>
+                <p>
+                  <strong>Focus:</strong> UX clarity, hierarchy, and
+                  accessibility.
+                </p>
+              </div>
+              <div class="bullet">
+                <span class="bullet__dot"></span>
+                <p><strong>Tools:</strong> Figma, HTML/CSS, JavaScript, Git.</p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="aside">
+            <div class="card">
+              <h3>Quick facts</h3>
+              <ul class="list">
+                <li><span>Location</span><span>Stockholm, Sweden</span></li>
+                <li><span>Study</span><span>Nackademin — Frontend</span></li>
+                <li><span>Looking for</span><span>LIA / Internship</span></li>
+              </ul>
+              <a class="btn btn--ghost btn--full" href="#contact">Contact me</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Resume -->
+      <section id="resume" class="section container">
+        <div class="resume">
+          <div class="card">
+            <h3>Skills</h3>
+            <div class="chips">
+              <span class="chip">UX/UI</span>
+              <span class="chip">Wireframing</span>
+              <span class="chip">Prototyping</span>
+              <span class="chip">Responsive Design</span>
+              <span class="chip">HTML/CSS</span>
+              <span class="chip">JavaScript</span>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Experience & Background</h3>
+            <p class="muted">
+              Design & architecture background with a strong visual foundation.
+              Now focused on frontend development and UX/UI.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section container">
+        <div class="contact">
+          <div>
+            <h2>Let's work together</h2>
+            <p class="lead">
+              Want to discuss an internship, a junior role, or a freelance
+              project? Send me a message.
+            </p>
+          </div>
+
+          <form class="form card" action="#" method="post">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" placeholder="Your name" />
+            </label>
+
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" placeholder="your@email.com" />
+            </label>
+
+            <label>
+              <span>Message</span>
+              <textarea
+                name="message"
+                rows="5"
+                placeholder="Tell me about your project..."
+              ></textarea>
+            </label>
+
+            <button class="btn btn--full" type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer container">
+      <p class="muted small">
+        © <span id="year"></span> Farideh Pakdaman. Built with love.
+      </p>
+    </footer>
+
+    <!-- Image Lightbox Modal (for artifacts) -->
+    <div
+      id="img-modal"
+      class="img-modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="Image preview"
+    >
+      <div class="img-modal__overlay" data-img-close></div>
+      <div class="img-modal__dialog">
+        <button class="img-modal__close" aria-label="Close image" type="button">
+          ✕
+        </button>
+        <img id="img-modal-img" src="" alt="Preview" />
+      </div>
+    </div>
+
+    <!-- Resume Modal -->
+    <div
+      id="resume-modal"
+      class="modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="Resume PDF"
+    >
+      <div class="modal__overlay" data-modal-close></div>
+      <div class="modal__dialog">
+        <button class="modal__close" aria-label="Close resume" type="button">
+          ✕
+        </button>
+        <iframe
+          id="resume-iframe"
+          src="resume.pdf"
+          title="Resume PDF"
+          frameborder="0"
+          loading="lazy"
+        ></iframe>
+        <div class="modal__actions">
+          <a
+            class="btn btn--ghost"
+            href="resume.pdf"
+            target="_blank"
+            rel="noopener"
+            >Open in new tab</a
+          >
+          <a class="btn" href="resume.pdf" download>Download</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
