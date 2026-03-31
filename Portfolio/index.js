@@ -98,27 +98,82 @@ document.addEventListener("keydown", function (ev) {
   var k = ev.key || ev.keyCode;
   if (k === "Escape" || k === "Esc" || k === 27) {
     if (imgModal && imgModal.classList.contains("is-open")) closeImgModal();
+    if (orbitOverlay && orbitOverlay.classList.contains("is-open")) closeOrbitPanel();
   }
 });
 /* =========================
    ORBITAL TIMELINE
 ========================= */
 
-const orbitNodes = document.querySelectorAll(".orbit__node");
-const orbitContents = document.querySelectorAll(".orbit-content");
+var orbitNodes = document.querySelectorAll(".orbit__node");
+var orbitContents = document.querySelectorAll(".orbit-content");
+var orbitOverlay = document.querySelector(".orbit-info--overlay");
+var orbitClose = orbitOverlay && orbitOverlay.querySelector(".orbit-info__close");
+var orbitWrapper = document.querySelector(".orbit__wrapper--artifact");
 
-orbitNodes.forEach((node) => {
-  node.addEventListener("click", () => {
-    const targetId = node.dataset.orbit;
+function setOrbitPanelPosition(sourceNode) {
+  if (!orbitWrapper || !sourceNode) return;
 
-    orbitNodes.forEach((item) => item.classList.remove("is-active"));
-    orbitContents.forEach((content) => content.classList.remove("is-visible"));
+  var wrapperRect = orbitWrapper.getBoundingClientRect();
+  var nodeRect = sourceNode.getBoundingClientRect();
+  var centerX = nodeRect.left - wrapperRect.left + nodeRect.width / 2;
+  var centerY = nodeRect.top - wrapperRect.top + nodeRect.height / 2;
 
-    node.classList.add("is-active");
+  orbitWrapper.style.setProperty("--panel-x", centerX + "px");
+  orbitWrapper.style.setProperty("--panel-y", centerY + "px");
+}
 
-    const targetContent = document.getElementById(targetId);
-    if (targetContent) {
-      targetContent.classList.add("is-visible");
-    }
-  });
-});
+function closeOrbitPanel() {
+  if (!orbitOverlay) return;
+  orbitOverlay.classList.remove("is-open");
+  orbitOverlay.setAttribute("aria-hidden", "true");
+  for (var i = 0; i < orbitNodes.length; i++) {
+    orbitNodes[i].classList.remove("is-active");
+  }
+  for (var j = 0; j < orbitContents.length; j++) {
+    orbitContents[j].classList.remove("is-visible");
+  }
+}
+
+function openOrbitPanel(targetId, sourceNode) {
+  if (!orbitOverlay) return;
+
+  for (var i = 0; i < orbitNodes.length; i++) {
+    orbitNodes[i].classList.remove("is-active");
+  }
+  for (var j = 0; j < orbitContents.length; j++) {
+    orbitContents[j].classList.remove("is-visible");
+  }
+
+  if (sourceNode) {
+    sourceNode.classList.add("is-active");
+    setOrbitPanelPosition(sourceNode);
+  }
+
+  var targetContent = document.getElementById(targetId);
+  if (targetContent) {
+    targetContent.classList.add("is-visible");
+    orbitOverlay.classList.add("is-open");
+    orbitOverlay.setAttribute("aria-hidden", "false");
+  }
+}
+
+for (var k = 0; k < orbitNodes.length; k++) {
+  (function (node) {
+    node.addEventListener("click", function () {
+      var targetId = node.dataset.orbit;
+      var isSameActive = node.classList.contains("is-active");
+
+      if (isSameActive && orbitOverlay && orbitOverlay.classList.contains("is-open")) {
+        closeOrbitPanel();
+        return;
+      }
+
+      openOrbitPanel(targetId, node);
+    });
+  })(orbitNodes[k]);
+}
+
+if (orbitClose) {
+  orbitClose.addEventListener("click", closeOrbitPanel);
+}

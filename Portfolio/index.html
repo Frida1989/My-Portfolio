@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Sora:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -52,7 +52,6 @@
           <p class="eyebrow">Frontend Developer • UX/UI Designer</p>
           <h1>
             Designing meaningful digital experiences
-            <br />
             <span class="accent">from concept to code.</span>
           </h1>
           <p class="lead">
@@ -85,22 +84,21 @@
         </div>
 
         <div class="hero__card">
-          <div class="card case-node case-node--overview">
-            <div class="card__top">
-              <p class="card__label">Currently</p>
-              <p class="card__value">Open to LIA / Internship</p>
-            </div>
-            <div class="card__body">
-              <p class="muted">
-                Interested in UX/UI, web design, and frontend development. Based
-                in Stockholm, Sweden.
-              </p>
-              <div class="chips">
-                <span class="chip">Figma</span>
-                <span class="chip">HTML/CSS</span>
-                <span class="chip">JavaScript</span>
-                <span class="chip">React</span>
-              </div>
+          <div class="hero__portrait">
+            <img src="portrait.jpg" alt="Portrait of Farideh Pakdaman" />
+          </div>
+
+          <div class="hero__note">
+            <p class="hero__note-kicker">Open to LIA / Internship</p>
+            <p class="hero__note-text">
+              Based in Stockholm, creating calm digital experiences through
+              UX/UI and frontend craft.
+            </p>
+            <div class="hero__skills" aria-label="Core skills">
+              <span>Figma</span>
+              <span>HTML/CSS</span>
+              <span>JavaScript</span>
+              <span>React</span>
             </div>
           </div>
         </div>
@@ -113,7 +111,7 @@
           <p class="muted">Case study: Frida Studio (service website).</p>
         </div>
 
-        <div class="grid">
+        <div class="grid grid--projects">
           <!-- Frida Studio -->
           <article class="project">
             <div class="project__thumb" aria-hidden="true">
@@ -145,9 +143,9 @@
           </p>
         </div>
 
-        <div class="two-col">
-          <div>
-            <div class="card">
+        <div class="two-col case-study">
+          <div class="content-stack case-study__main">
+            <div class="card case-node case-node--overview">
               <h3>Overview</h3>
               <p class="muted">
                 A clean service website focused on trust, clarity, and
@@ -167,10 +165,7 @@
               </div>
             </div>
 
-            <div
-              class="card case-node case-node--problem"
-              style="margin-top: 1rem"
-            >
+            <div class="card case-node case-node--problem">
               <h3>Problem</h3>
               <p class="muted">
                 Users feel overwhelmed when choosing design services. The site
@@ -179,10 +174,7 @@
               </p>
             </div>
 
-            <div
-              class="card case-node case-node--process"
-              style="margin-top: 1rem"
-            >
+            <div class="card case-node case-node--process">
               <h3>Process</h3>
               <div class="bullets">
                 <div class="bullet">
@@ -209,10 +201,7 @@
               </div>
             </div>
 
-            <div
-              class="card case-node case-node--solution"
-              style="margin-top: 1rem"
-            >
+            <div class="card case-node case-node--solution">
               <h3>Solution</h3>
               <ul class="list">
                 <li>
@@ -230,12 +219,9 @@
               </ul>
             </div>
 
-            <div
-              class="card case-node case-node--artifacts"
-              style="margin-top: 1rem"
-            >
+            <div class="card case-node case-node--artifacts">
               <!-- Design Process Orbit -->
-              <section id="orbit-journey" class="section container">
+              <div id="orbit-journey" class="case-artifacts">
                 <div class="section__head">
                   <h2>Design Process Orbit</h2>
                   <p class="muted">
@@ -244,7 +230,7 @@
                   </p>
                 </div>
 
-                <div class="orbit orbit--center-card">
+                <div class="orbit">
                   <div class="orbit__stage">
                     <div class="orbit__wrapper orbit__wrapper--artifact">
                       <div class="orbit__center">
@@ -337,7 +323,14 @@
                       </button>
 
                       <!-- CENTER CARD -->
-                      <div class="orbit-info orbit-info--overlay card">
+                      <div class="orbit-info orbit-info--overlay card" aria-hidden="true">
+                        <button
+                          class="orbit-info__close"
+                          aria-label="Close artifact card"
+                          type="button"
+                        >
+                          ×
+                        </button>
                         <div class="orbit-content" id="persona">
                           <p class="orbit-info__eyebrow">01 / Persona</p>
                           <h3>Our Clients</h3>
@@ -345,6 +338,16 @@
                             Homeowners seeking professional design help to
                             increase property value
                           </p>
+                          <button
+                            class="artifact-thumb orbit-content__preview"
+                            type="button"
+                            data-img="Persona.jpg"
+                          >
+                            <img
+                              src="Persona.jpg"
+                              alt="Persona board for Frida Studio"
+                            />
+                          </button>
 
                           <div class="orbit-copy-grid">
                             <div
@@ -409,6 +412,16 @@
                             Mapping the emotional path from uncertainty to
                             confidence.
                           </p>
+                          <button
+                            class="artifact-thumb orbit-content__preview"
+                            type="button"
+                            data-img="Client journey.jpg"
+                          >
+                            <img
+                              src="Client journey.jpg"
+                              alt="Client journey map for Frida Studio"
+                            />
+                          </button>
                           <p class="muted">
                             This artifact highlights how the client moves
                             through different stages: recognizing a need,
@@ -420,11 +433,55 @@
                             inform, and guide the user toward booking a
                             consultation.
                           </p>
+                          <div class="orbit-copy-grid orbit-copy-grid--steps">
+                            <div class="orbit-copy-block">
+                              <h5>01</h5>
+                              <p>Problem awareness<br />Stressed</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>02</h5>
+                              <p>Search<br />Uncertain</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>03</h5>
+                              <p>Discovery<br />Curious</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>04</h5>
+                              <p>Exploration<br />Interested</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>05</h5>
+                              <p>Trust Building<br />Confident</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>06</h5>
+                              <p>Action<br />Motivated</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>07</h5>
+                              <p>Resolution<br />Satisfied</p>
+                            </div>
+                          </div>
+                          <div class="orbit-quote">
+                            Our approach: build trust through portfolio examples
+                            and make consultation booking simple and safe.
+                          </div>
                         </div>
 
                         <div class="orbit-content" id="storyboard">
                           <p class="orbit-info__eyebrow">03 / Storyboard</p>
                           <h3>Storyboard</h3>
+                          <button
+                            class="artifact-thumb orbit-content__preview"
+                            type="button"
+                            data-img="Story Board.jpg"
+                          >
+                            <img
+                              src="Story Board.jpg"
+                              alt="Storyboard for Frida Studio"
+                            />
+                          </button>
                           <p class="orbit-info__lead">
                             Visualizing the user’s real-life situation and
                             motivations.
@@ -439,11 +496,47 @@
                             relevant, clear, and emotionally connected to the
                             user’s needs.
                           </p>
+                          <div class="orbit-copy-grid">
+                            <div class="orbit-copy-block">
+                              <h5>1</h5>
+                              <p>The Problem<br />Frustrated & Worried</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>2</h5>
+                              <p>Searching for Help<br />Hopeful</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>3</h5>
+                              <p>First Impression<br />Impressed</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>4</h5>
+                              <p>Exploring Services<br />Interested</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>5</h5>
+                              <p>Taking Action<br />Confident</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>6</h5>
+                              <p>The Result<br />Satisfied & Relieved</p>
+                            </div>
+                          </div>
                         </div>
 
                         <div class="orbit-content" id="site-structure">
                           <p class="orbit-info__eyebrow">04 / Site Structure</p>
                           <h3>Site Structure</h3>
+                          <button
+                            class="artifact-thumb orbit-content__preview"
+                            type="button"
+                            data-img="Site structure.jpg"
+                          >
+                            <img
+                              src="Site structure.jpg"
+                              alt="Site structure diagram for Frida Studio"
+                            />
+                          </button>
                           <p class="orbit-info__lead">
                             Creating a clear information hierarchy for better
                             navigation.
@@ -457,6 +550,24 @@
                             It ensures that the experience feels intuitive and
                             that important content appears in the right order.
                           </p>
+                          <div class="orbit-copy-grid">
+                            <div class="orbit-copy-block">
+                              <h5>Root</h5>
+                              <p>Home anchors the full experience.</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>Main Pages</h5>
+                              <p>About, Services, Portfolio, Process, Contact.</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>Priority</h5>
+                              <p>Services and portfolio are surfaced early.</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>CTA Focus</h5>
+                              <p>Contact remains accessible from every page.</p>
+                            </div>
+                          </div>
                         </div>
 
                         <div class="orbit-content" id="responsive-design">
@@ -464,6 +575,16 @@
                             05 / Responsive Design
                           </p>
                           <h3>Responsive Design</h3>
+                          <button
+                            class="artifact-thumb orbit-content__preview"
+                            type="button"
+                            data-img="Responsive Design.jpg"
+                          >
+                            <img
+                              src="Responsive Design.jpg"
+                              alt="Responsive layouts for Frida Studio"
+                            />
+                          </button>
                           <p class="orbit-info__lead">
                             Adapting the experience for different devices and
                             screen sizes.
@@ -477,11 +598,35 @@
                             The goal was to preserve a premium and calm feeling
                             across all devices.
                           </p>
+                          <div class="orbit-copy-grid">
+                            <div class="orbit-copy-block">
+                              <h5>Desktop</h5>
+                              <p>Two-column layout, larger spacing, expanded navigation.</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>Tablet</h5>
+                              <p>Flexible grid layout with simpler visual rhythm.</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>Mobile</h5>
+                              <p>Single-column flow, larger tap targets, focused CTA.</p>
+                            </div>
+                          </div>
                         </div>
 
                         <div class="orbit-content" id="design-system">
                           <p class="orbit-info__eyebrow">06 / Design System</p>
                           <h3>Design System</h3>
+                          <button
+                            class="artifact-thumb orbit-content__preview"
+                            type="button"
+                            data-img="Design System.jpg"
+                          >
+                            <img
+                              src="Design System.jpg"
+                              alt="Design system board for Frida Studio"
+                            />
+                          </button>
                           <p class="orbit-info__lead">
                             Establishing a consistent visual language across the
                             project.
@@ -495,11 +640,35 @@
                             cohesive, and easy to scale through the different
                             sections of the website.
                           </p>
+                          <div class="orbit-copy-grid">
+                            <div class="orbit-copy-block">
+                              <h5>Palette</h5>
+                              <p>Warm white, soft beige, muted green, charcoal.</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>Typography</h5>
+                              <p>Elegant serif paired with a clean sans-serif.</p>
+                            </div>
+                            <div class="orbit-copy-block orbit-copy-block--full">
+                              <h5>Feeling</h5>
+                              <p>Calm, refined, welcoming, and easy to trust.</p>
+                            </div>
+                          </div>
                         </div>
 
                         <div class="orbit-content" id="ui-component">
                           <p class="orbit-info__eyebrow">07 / UI Component</p>
                           <h3>UI Component</h3>
+                          <button
+                            class="artifact-thumb orbit-content__preview"
+                            type="button"
+                            data-img="UI component.jpg"
+                          >
+                            <img
+                              src="UI component.jpg"
+                              alt="UI components board for Frida Studio"
+                            />
+                          </button>
                           <p class="orbit-info__lead">
                             Defining reusable interface pieces for a polished
                             user experience.
@@ -514,12 +683,26 @@
                             the final design feel more professional and
                             deliberate.
                           </p>
+                          <div class="orbit-copy-grid">
+                            <div class="orbit-copy-block">
+                              <h5>Buttons</h5>
+                              <p>Primary, secondary, and text actions with clear hierarchy.</p>
+                            </div>
+                            <div class="orbit-copy-block">
+                              <h5>Card Styles</h5>
+                              <p>Simple presentation blocks for projects and service content.</p>
+                            </div>
+                            <div class="orbit-copy-block orbit-copy-block--full">
+                              <h5>Spacing System</h5>
+                              <p>Consistent small-to-large spacing rhythm across the UI.</p>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </section>
+              </div>
 
               <h3>Result & Learnings</h3>
               <p class="muted">
@@ -530,7 +713,7 @@
             </div>
           </div>
 
-          <aside class="aside">
+          <aside class="aside case-study__aside">
             <div class="card">
               <h3>Links</h3>
               <ul class="list">
