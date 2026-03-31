@@ -234,93 +234,293 @@
               class="card case-node case-node--artifacts"
               style="margin-top: 1rem"
             >
-              <h3>Artifacts</h3>
-              <p class="muted">Design artifacts available for review:</p>
-              <ul class="list">
-                <li>
-                  <span>Storyboard</span
-                  ><span>Shows user scenarios and flow</span>
-                </li>
-                <li>
-                  <span>Wireframe</span
-                  ><span>Low-fidelity layout of key pages</span>
-                </li>
-                <li>
-                  <span>Mockup</span><span>High-fidelity UI screenshots</span>
-                </li>
-                <li>
-                  <span>Site map</span
-                  ><span>Information architecture overview</span>
-                </li>
-              </ul>
+              <!-- Design Process Orbit -->
+              <section id="orbit-journey" class="section container">
+                <div class="section__head">
+                  <h2>Design Process Orbit</h2>
+                  <p class="muted">
+                    Explore the key design artifacts behind the Frida Studio
+                    case study.
+                  </p>
+                </div>
 
-              <!-- Thumbnails gallery: click to open lightbox -->
-              <div class="artifacts-gallery" aria-hidden="false">
-                <button
-                  class="artifact-thumb"
-                  type="button"
-                  data-img="Persona.jpg"
-                  aria-label="Open Persona"
-                >
-                  <img src="Persona.jpg" alt="Persona" />
-                </button>
-                <button
-                  class="artifact-thumb"
-                  type="button"
-                  data-img="Client%20journey.jpg"
-                  aria-label="Open Client journey"
-                >
-                  <img src="Client%20journey.jpg" alt="Client journey" />
-                </button>
+                <div class="orbit orbit--center-card">
+                  <div class="orbit__stage">
+                    <div class="orbit__wrapper orbit__wrapper--artifact">
+                      <div class="orbit__center">
+                        <div class="orbit__core"></div>
+                        <div class="orbit__ring orbit__ring--one"></div>
+                        <div class="orbit__ring orbit__ring--two"></div>
+                        <div class="orbit__label">
+                          <span>Frida Studio</span>
+                          <small>Design Artifacts</small>
+                        </div>
+                      </div>
 
-                <button
-                  class="artifact-thumb"
-                  type="button"
-                  data-img="Story%20Board.jpg"
-                  aria-label="Open Story Board"
-                >
-                  <img src="Story%20Board.jpg" alt="Story Board" />
-                </button>
-                <button
-                  class="artifact-thumb"
-                  type="button"
-                  data-img="Site%20structure.jpg"
-                  aria-label="Open Site structure"
-                >
-                  <img src="Site%20structure.jpg" alt="Site structure" />
-                </button>
-                <button
-                  class="artifact-thumb"
-                  type="button"
-                  data-img="Responsive%20Design.jpg"
-                  aria-label="Open Responsive Design"
-                >
-                  <img src="Responsive%20Design.jpg" alt="Responsive design" />
-                </button>
+                      <div class="orbit__path orbit__path--artifact"></div>
 
-                <button
-                  class="artifact-thumb"
-                  type="button"
-                  data-img="Design%20System.jpg"
-                  aria-label="Open Design System"
-                >
-                  <img src="Design%20System.jpg" alt="Design system" />
-                </button>
-                <button
-                  class="artifact-thumb"
-                  type="button"
-                  data-img="UI%20component.jpg"
-                  aria-label="Open UI component"
-                >
-                  <img src="UI%20component.jpg" alt="UI component" />
-                </button>
-              </div>
-            </div>
+                      <button
+                        class="orbit__node orbit__node--1"
+                        type="button"
+                        data-orbit="persona"
+                        aria-label="01 Persona"
+                      >
+                        <span class="orbit__node-number">01</span>
+                        <span class="orbit__node-arrow">→</span>
+                        <span class="orbit__node-text">Persona</span>
+                      </button>
 
-            <div
-              class="card case-node case-node--result"
-              style="margin-top: 1rem"
-            >
+                      <button
+                        class="orbit__node orbit__node--2"
+                        type="button"
+                        data-orbit="client-journey"
+                        aria-label="02 Client Journey"
+                      >
+                        <span class="orbit__node-number">02</span>
+                        <span class="orbit__node-arrow">→</span>
+                        <span class="orbit__node-text">Client Journey</span>
+                      </button>
+
+                      <button
+                        class="orbit__node orbit__node--3"
+                        type="button"
+                        data-orbit="storyboard"
+                        aria-label="03 Storyboard"
+                      >
+                        <span class="orbit__node-number">03</span>
+                        <span class="orbit__node-arrow">→</span>
+                        <span class="orbit__node-text">Storyboard</span>
+                      </button>
+
+                      <button
+                        class="orbit__node orbit__node--4"
+                        type="button"
+                        data-orbit="site-structure"
+                        aria-label="04 Site Structure"
+                      >
+                        <span class="orbit__node-number">04</span>
+                        <span class="orbit__node-arrow">→</span>
+                        <span class="orbit__node-text">Site Structure</span>
+                      </button>
+
+                      <button
+                        class="orbit__node orbit__node--5"
+                        type="button"
+                        data-orbit="responsive-design"
+                        aria-label="05 Responsive Design"
+                      >
+                        <span class="orbit__node-number">05</span>
+                        <span class="orbit__node-arrow">→</span>
+                        <span class="orbit__node-text">Responsive Design</span>
+                      </button>
+
+                      <button
+                        class="orbit__node orbit__node--6"
+                        type="button"
+                        data-orbit="design-system"
+                        aria-label="06 Design System"
+                      >
+                        <span class="orbit__node-number">06</span>
+                        <span class="orbit__node-arrow">→</span>
+                        <span class="orbit__node-text">Design System</span>
+                      </button>
+
+                      <button
+                        class="orbit__node orbit__node--7"
+                        type="button"
+                        data-orbit="ui-component"
+                        aria-label="07 UI Component"
+                      >
+                        <span class="orbit__node-number">07</span>
+                        <span class="orbit__node-arrow">→</span>
+                        <span class="orbit__node-text">UI Component</span>
+                      </button>
+
+                      <!-- CENTER CARD -->
+                      <div class="orbit-info orbit-info--overlay card">
+                        <div class="orbit-content" id="persona">
+                          <p class="orbit-info__eyebrow">01 / Persona</p>
+                          <h3>Our Clients</h3>
+                          <p class="orbit-info__lead">
+                            Homeowners seeking professional design help to
+                            increase property value
+                          </p>
+
+                          <div class="orbit-copy-grid">
+                            <div
+                              class="orbit-copy-block orbit-copy-block--full"
+                            >
+                              <h4>Sarah Nielsen</h4>
+                              <p class="muted">Homeowner, 42 years old</p>
+                            </div>
+
+                            <div class="orbit-copy-block">
+                              <h5>Demographics</h5>
+                              <ul>
+                                <li>Age: 30-60</li>
+                                <li>Urban homeowner</li>
+                                <li>Not a design expert</li>
+                                <li>Values professional guidance</li>
+                              </ul>
+                            </div>
+
+                            <div class="orbit-copy-block">
+                              <h5>Context</h5>
+                              <ul>
+                                <li>Preparing to sell home</li>
+                                <li>Emotionally stressed</li>
+                                <li>Limited design knowledge</li>
+                                <li>Seeking trustworthy experts</li>
+                              </ul>
+                            </div>
+
+                            <div class="orbit-copy-block">
+                              <h5>Goals</h5>
+                              <ul>
+                                <li>Sell house faster</li>
+                                <li>Increase property value</li>
+                                <li>Redesign outdated kitchen</li>
+                                <li>Prepare rental property</li>
+                              </ul>
+                            </div>
+
+                            <div class="orbit-copy-block">
+                              <h5>Needs</h5>
+                              <ul>
+                                <li>Clear service offerings</li>
+                                <li>Proof of expertise</li>
+                                <li>Before/after examples</li>
+                                <li>Easy booking process</li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <blockquote class="orbit-quote">
+                            “I want my home to look modern and appealing to
+                            buyers, but I don’t know where to start. I need
+                            someone I can trust who has done this before.”
+                          </blockquote>
+                        </div>
+
+                        <div class="orbit-content" id="client-journey">
+                          <p class="orbit-info__eyebrow">02 / Client Journey</p>
+                          <h3>Client Journey</h3>
+                          <p class="orbit-info__lead">
+                            Mapping the emotional path from uncertainty to
+                            confidence.
+                          </p>
+                          <p class="muted">
+                            This artifact highlights how the client moves
+                            through different stages: recognizing a need,
+                            searching for help, comparing options, building
+                            trust, and finally feeling ready to make contact.
+                          </p>
+                          <p class="muted">
+                            It helped define where the website should reassure,
+                            inform, and guide the user toward booking a
+                            consultation.
+                          </p>
+                        </div>
+
+                        <div class="orbit-content" id="storyboard">
+                          <p class="orbit-info__eyebrow">03 / Storyboard</p>
+                          <h3>Storyboard</h3>
+                          <p class="orbit-info__lead">
+                            Visualizing the user’s real-life situation and
+                            motivations.
+                          </p>
+                          <p class="muted">
+                            The storyboard translates the service into a human
+                            scenario. It shows how a homeowner feels before,
+                            during, and after discovering Frida Studio.
+                          </p>
+                          <p class="muted">
+                            This made it easier to design a website that feels
+                            relevant, clear, and emotionally connected to the
+                            user’s needs.
+                          </p>
+                        </div>
+
+                        <div class="orbit-content" id="site-structure">
+                          <p class="orbit-info__eyebrow">04 / Site Structure</p>
+                          <h3>Site Structure</h3>
+                          <p class="orbit-info__lead">
+                            Creating a clear information hierarchy for better
+                            navigation.
+                          </p>
+                          <p class="muted">
+                            The site structure defines how content is organized
+                            across the website, helping users quickly understand
+                            services, trust signals, and the path to contact.
+                          </p>
+                          <p class="muted">
+                            It ensures that the experience feels intuitive and
+                            that important content appears in the right order.
+                          </p>
+                        </div>
+
+                        <div class="orbit-content" id="responsive-design">
+                          <p class="orbit-info__eyebrow">
+                            05 / Responsive Design
+                          </p>
+                          <h3>Responsive Design</h3>
+                          <p class="orbit-info__lead">
+                            Adapting the experience for different devices and
+                            screen sizes.
+                          </p>
+                          <p class="muted">
+                            This artifact explores how the layout shifts between
+                            desktop and mobile while keeping the visual balance,
+                            readability, and CTA clarity.
+                          </p>
+                          <p class="muted">
+                            The goal was to preserve a premium and calm feeling
+                            across all devices.
+                          </p>
+                        </div>
+
+                        <div class="orbit-content" id="design-system">
+                          <p class="orbit-info__eyebrow">06 / Design System</p>
+                          <h3>Design System</h3>
+                          <p class="orbit-info__lead">
+                            Establishing a consistent visual language across the
+                            project.
+                          </p>
+                          <p class="muted">
+                            The design system includes colors, typography,
+                            spacing, and reusable interface rules.
+                          </p>
+                          <p class="muted">
+                            It helped keep the brand expression elegant,
+                            cohesive, and easy to scale through the different
+                            sections of the website.
+                          </p>
+                        </div>
+
+                        <div class="orbit-content" id="ui-component">
+                          <p class="orbit-info__eyebrow">07 / UI Component</p>
+                          <h3>UI Component</h3>
+                          <p class="orbit-info__lead">
+                            Defining reusable interface pieces for a polished
+                            user experience.
+                          </p>
+                          <p class="muted">
+                            This artifact focuses on the smaller building blocks
+                            of the interface, such as buttons, cards, labels,
+                            and layout elements.
+                          </p>
+                          <p class="muted">
+                            Reusable components strengthen consistency and make
+                            the final design feel more professional and
+                            deliberate.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
               <h3>Result & Learnings</h3>
               <p class="muted">
                 The site communicates value faster and guides users to contact

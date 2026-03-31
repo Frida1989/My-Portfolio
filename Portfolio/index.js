@@ -100,3 +100,25 @@ document.addEventListener("keydown", function (ev) {
     if (imgModal && imgModal.classList.contains("is-open")) closeImgModal();
   }
 });
+/* =========================
+   ORBITAL TIMELINE
+========================= */
+
+const orbitNodes = document.querySelectorAll(".orbit__node");
+const orbitContents = document.querySelectorAll(".orbit-content");
+
+orbitNodes.forEach((node) => {
+  node.addEventListener("click", () => {
+    const targetId = node.dataset.orbit;
+
+    orbitNodes.forEach((item) => item.classList.remove("is-active"));
+    orbitContents.forEach((content) => content.classList.remove("is-visible"));
+
+    node.classList.add("is-active");
+
+    const targetContent = document.getElementById(targetId);
+    if (targetContent) {
+      targetContent.classList.add("is-visible");
+    }
+  });
+});
