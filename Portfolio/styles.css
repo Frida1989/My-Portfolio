@@ -24,8 +24,7 @@
     "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --font-head:
     "Sora", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  --font-display:
-    "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
 
   /* Layout */
   --container: 1180px;
@@ -262,6 +261,40 @@ p {
   border-radius: 999px;
   font-size: 0.9rem;
   color: var(--muted);
+}
+.skills-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+.skills-group {
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.skills-group h4 {
+  margin: 0 0 0.55rem;
+  font-size: 0.92rem;
+  font-family: var(--font-head);
+  color: var(--text);
+}
+#resume .card {
+  width: 100%;
+}
+#resume {
+  width: 100%;
+}
+#resume .resume > .card {
+  min-width: 0;
+}
+#resume .chips {
+  gap: 0.45rem;
+  margin-top: 0;
+}
+#resume .chip {
+  font-size: 0.84rem;
+  padding: 0.32rem 0.55rem;
 }
 .tag {
   border: 1px solid var(--border);
@@ -604,8 +637,10 @@ p {
 /* Resume */
 .resume {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1rem;
+  max-width: 1040px;
+  margin: 0 auto;
 }
 
 .resume__viewer {
@@ -752,6 +787,9 @@ textarea:focus {
   .resume {
     grid-template-columns: 1fr;
   }
+  .skills-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .contact {
     grid-template-columns: 1fr;
   }
@@ -773,6 +811,12 @@ textarea:focus {
   }
   .nav__links.is-open {
     display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .skills-groups {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1659,7 +1703,14 @@ textarea:focus {
   width: 300px;
   padding: 0.5rem;
   border-radius: 18px;
-  clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
+  clip-path: polygon(
+    14px 0,
+    100% 0,
+    100% calc(100% - 14px),
+    calc(100% - 14px) 100%,
+    0 100%,
+    0 14px
+  );
   background: rgba(11, 16, 24, 0.94);
 }
 
@@ -1893,13 +1944,27 @@ textarea:focus {
   height: var(--node-size);
 }
 
-.orbit__node--1 { --angle: 0deg; }
-.orbit__node--2 { --angle: 51.4286deg; }
-.orbit__node--3 { --angle: 102.8571deg; }
-.orbit__node--4 { --angle: 154.2857deg; }
-.orbit__node--5 { --angle: 205.7143deg; }
-.orbit__node--6 { --angle: 257.1429deg; }
-.orbit__node--7 { --angle: 308.5714deg; }
+.orbit__node--1 {
+  --angle: 0deg;
+}
+.orbit__node--2 {
+  --angle: 51.4286deg;
+}
+.orbit__node--3 {
+  --angle: 102.8571deg;
+}
+.orbit__node--4 {
+  --angle: 154.2857deg;
+}
+.orbit__node--5 {
+  --angle: 205.7143deg;
+}
+.orbit__node--6 {
+  --angle: 257.1429deg;
+}
+.orbit__node--7 {
+  --angle: 308.5714deg;
+}
 
 .orbit__node,
 .orbit__node--1,
@@ -1909,11 +1974,8 @@ textarea:focus {
 .orbit__node--5,
 .orbit__node--6,
 .orbit__node--7 {
-  transform:
-    translate(-50%, -50%)
-    rotate(var(--angle))
-    translateY(calc(var(--orbit-radius) * -1))
-    rotate(calc(var(--angle) * -1));
+  transform: translate(-50%, -50%) rotate(var(--angle))
+    translateY(calc(var(--orbit-radius) * -1)) rotate(calc(var(--angle) * -1));
 }
 
 .orbit__node:hover,
@@ -1922,11 +1984,8 @@ textarea:focus {
 .orbit__node--3.is-active,
 .orbit__node--5.is-active,
 .orbit__node--7.is-active {
-  transform:
-    translate(-50%, -50%)
-    rotate(var(--angle))
-    translateY(calc(var(--orbit-radius) * -1))
-    rotate(calc(var(--angle) * -1))
+  transform: translate(-50%, -50%) rotate(var(--angle))
+    translateY(calc(var(--orbit-radius) * -1)) rotate(calc(var(--angle) * -1))
     scale(1.06);
 }
 
