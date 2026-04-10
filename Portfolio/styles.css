@@ -639,7 +639,8 @@ p {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  max-width: 1040px;
+  width: min(100%, 1180px);
+  max-width: 1180px;
   margin: 0 auto;
 }
 
