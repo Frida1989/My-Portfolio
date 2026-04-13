@@ -1297,7 +1297,7 @@ textarea:focus {
 }
 
 .orbit-copy-block {
-  padding: 0.9rem;
+  padding: 1.15rem;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.035);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -2053,3 +2053,235 @@ textarea:focus {
     width: 240px;
   }
 }
+
+/* Mobile orbit override final */
+@media (max-width: 640px) {
+  .modal__dialog {
+    width: calc(100% - 1rem);
+    max-height: 94vh;
+    border-radius: 18px;
+  }
+
+  .modal__dialog iframe {
+    height: 62vh;
+  }
+
+  .modal__actions {
+    flex-direction: column;
+  }
+
+  .modal__actions .btn {
+    width: 100%;
+  }
+
+  .orbit__stage,
+  .orbit__wrapper--artifact {
+    min-height: auto;
+  }
+
+  .orbit__center,
+  .orbit__path--artifact {
+    display: none;
+  }
+
+  .orbit__wrapper--artifact {
+    display: block;
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  .orbit__node,
+  .orbit__node:hover,
+  .orbit__node.is-active,
+  .orbit__node--1.is-active,
+  .orbit__node--3.is-active,
+  .orbit__node--5.is-active,
+  .orbit__node--7.is-active {
+    position: static;
+    width: 100%;
+    height: auto;
+    min-height: 62px;
+    margin-bottom: 0.75rem;
+    border-radius: 18px;
+    transform: none;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.55rem;
+    padding: 0.95rem 1rem;
+    text-align: left;
+  }
+
+  .orbit__node-number {
+    min-width: 28px;
+  }
+
+  .orbit__node-text {
+    max-width: none;
+  }
+
+  .orbit-info--overlay,
+  .orbit-info--overlay.is-open {
+    position: static;
+    width: 100%;
+    min-height: auto;
+    max-height: none;
+    transform: none;
+    margin-top: 1rem;
+    overflow: visible;
+  }
+
+  .orbit-copy-grid,
+  .orbit-copy-grid--steps {
+    grid-template-columns: 1fr;
+  }
+}
+/* Orbit readability override */
+.orbit-info__eyebrow,
+.orbit-content h3,
+.orbit-info__lead,
+.orbit-content .muted,
+.orbit-copy-grid,
+.orbit-quote {
+  display: none;
+}
+
+.orbit-info--overlay {
+  width: min(720px, calc(100% - 1.5rem));
+  max-width: 720px;
+  max-height: min(84vh, 860px);
+  padding: 1.15rem;
+  overflow-y: auto;
+}
+
+.orbit-content__preview {
+  margin: 0;
+}
+
+.orbit-content__preview img {
+  max-height: 420px;
+}
+
+@media (max-width: 900px) {
+  .orbit-info--overlay {
+    width: min(560px, calc(100% - 1rem));
+    max-width: 560px;
+  }
+
+  .orbit-content__preview img {
+    max-height: 320px;
+  }
+}
+
+@media (max-width: 640px) {
+  .orbit-info__eyebrow,
+  .orbit-content h3,
+  .orbit-info__lead,
+  .orbit-content .muted,
+  .orbit-copy-grid,
+  .orbit-quote {
+    display: none;
+  }
+
+  .orbit-info--overlay,
+  .orbit-info--overlay.is-open {
+    width: 100%;
+    max-width: none;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .orbit-content__preview {
+    margin: 0;
+  }
+
+  .orbit-content__preview img {
+    max-height: none;
+  }
+}
+/* Orbit mobile UX override */
+@media (max-width: 640px) {
+  .case-node--artifacts {
+    padding: 1rem;
+  }
+
+  .orbit__wrapper--artifact {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .orbit__node,
+  .orbit__node:hover,
+  .orbit__node.is-active,
+  .orbit__node--1.is-active,
+  .orbit__node--3.is-active,
+  .orbit__node--5.is-active,
+  .orbit__node--7.is-active {
+    min-height: 72px;
+    margin-bottom: 0;
+    padding: 1rem 1rem;
+    border-radius: 20px;
+    gap: 0.7rem;
+    align-items: center;
+    box-shadow: 0 12px 30px rgba(2, 6, 23, 0.18);
+  }
+
+  .orbit__node-arrow {
+    margin-left: auto;
+    font-size: 1rem;
+    opacity: 0.72;
+    transition: transform 180ms ease, opacity 180ms ease;
+  }
+
+  .orbit__node.is-active .orbit__node-arrow {
+    transform: rotate(90deg);
+    opacity: 1;
+  }
+
+  .orbit__node-number {
+    min-width: 2rem;
+    font-size: 0.78rem;
+  }
+
+  .orbit__node-text {
+    font-size: 0.88rem;
+    line-height: 1.25;
+    padding-right: 0.35rem;
+  }
+
+  .orbit-info--overlay,
+  .orbit-info--overlay.is-open {
+    position: static;
+    width: 100%;
+    max-width: none;
+    max-height: none;
+    margin-top: -0.1rem;
+    margin-bottom: 0.35rem;
+    padding: 0.75rem;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: none;
+    clip-path: none;
+  }
+
+  .orbit-info__close {
+    width: 32px;
+    height: 32px;
+  }
+
+  .orbit-content__preview,
+  .orbit-content__preview img {
+    border-radius: 16px;
+  }
+
+  .orbit-content__preview img {
+    width: 100%;
+    max-height: none;
+    min-height: 180px;
+    object-fit: contain;
+  }
+}
+.orbit-content__preview,
+.orbit-content__preview img {
+  background: #0f172a;
+}
+

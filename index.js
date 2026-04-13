@@ -123,12 +123,63 @@ function setOrbitPanelPosition(sourceNode) {
   orbitWrapper.style.setProperty("--panel-y", centerY + "px");
 }
 
+var orbitMobileMedia =
+  typeof window !== "undefined" && window.matchMedia
+    ? window.matchMedia("(max-width: 640px)")
+    : null;
+var orbitOverlayHome = orbitOverlay ? orbitOverlay.parentNode : null;
+
+function isOrbitMobileLayout() {
+  return !!(orbitMobileMedia && orbitMobileMedia.matches);
+}
+
+function restoreOrbitOverlayHome() {
+  if (!orbitOverlay || !orbitOverlayHome) return;
+  if (orbitOverlay.parentNode !== orbitOverlayHome) {
+    orbitOverlayHome.appendChild(orbitOverlay);
+  }
+}
+
+function moveOrbitPanel(sourceNode) {
+  if (!orbitOverlay || !sourceNode) return;
+
+  if (isOrbitMobileLayout()) {
+    sourceNode.insertAdjacentElement("afterend", orbitOverlay);
+    return;
+  }
+
+  restoreOrbitOverlayHome();
+  setOrbitPanelPosition(sourceNode);
+}
+
+function syncOrbitPanelLayout() {
+  if (!orbitOverlay) return;
+
+  var activeNode = null;
+  for (var i = 0; i < orbitNodes.length; i++) {
+    if (orbitNodes[i].classList.contains("is-active")) {
+      activeNode = orbitNodes[i];
+      break;
+    }
+  }
+
+  if (!activeNode) {
+    restoreOrbitOverlayHome();
+    return;
+  }
+
+  moveOrbitPanel(activeNode);
+}
+
 function closeOrbitPanel() {
   if (!orbitOverlay) return;
   orbitOverlay.classList.remove("is-open");
   orbitOverlay.setAttribute("aria-hidden", "true");
+  restoreOrbitOverlayHome();
+
   for (var i = 0; i < orbitNodes.length; i++) {
     orbitNodes[i].classList.remove("is-active");
+    orbitNodes[i].setAttribute("aria-expanded", "false");
   }
   for (var j = 0; j < orbitContents.length; j++) {
     orbitContents[j].classList.remove("is-visible");
@@ -140,6 +191,7 @@ function openOrbitPanel(targetId, sourceNode) {
 
   for (var i = 0; i < orbitNodes.length; i++) {
     orbitNodes[i].classList.remove("is-active");
+    orbitNodes[i].setAttribute("aria-expanded", "false");
   }
   for (var j = 0; j < orbitContents.length; j++) {
     orbitContents[j].classList.remove("is-visible");
@@ -147,7 +199,8 @@ function openOrbitPanel(targetId, sourceNode) {
 
   if (sourceNode) {
     sourceNode.classList.add("is-active");
-    setOrbitPanelPosition(sourceNode);
+    sourceNode.setAttribute("aria-expanded", "true");
+    moveOrbitPanel(sourceNode);
   }
 
   var targetContent = document.getElementById(targetId);
@@ -155,13 +208,25 @@ function openOrbitPanel(targetId, sourceNode) {
     targetContent.classList.add("is-visible");
     orbitOverlay.classList.add("is-open");
     orbitOverlay.setAttribute("aria-hidden", "false");
+
+    if (isOrbitMobileLayout() && orbitOverlay.scrollIntoView) {
+      window.requestAnimationFrame(function () {
+        orbitOverlay.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      });
+    }
   }
 }
 
 for (var k = 0; k < orbitNodes.length; k++) {
   (function (node) {
+    var targetId = node.dataset.orbit;
+    node.setAttribute("aria-expanded", "false");
+    if (targetId) node.setAttribute("aria-controls", targetId);
+
     node.addEventListener("click", function () {
-      var targetId = node.dataset.orbit;
       var isSameActive = node.classList.contains("is-active");
 
       if (isSameActive && orbitOverlay && orbitOverlay.classList.contains("is-open")) {
@@ -177,3 +242,28 @@ for (var k = 0; k < orbitNodes.length; k++) {
 if (orbitClose) {
   orbitClose.addEventListener("click", closeOrbitPanel);
 }
+
+document.addEventListener("click", function (ev) {
+  if (!orbitOverlay || !orbitOverlay.classList.contains("is-open")) return;
+
+  var clickedNode = ev.target && ev.target.closest
+    ? ev.target.closest(".orbit__node")
+    : null;
+  var clickedOverlay = ev.target && ev.target.closest
+    ? ev.target.closest(".orbit-info--overlay")
+    : null;
+
+  if (!clickedNode && !clickedOverlay) {
+    closeOrbitPanel();
+  }
+});
+
+if (orbitMobileMedia) {
+  if (orbitMobileMedia.addEventListener) {
+    orbitMobileMedia.addEventListener("change", syncOrbitPanelLayout);
+  } else if (orbitMobileMedia.addListener) {
+    orbitMobileMedia.addListener(syncOrbitPanelLayout);
+  }
+}
+
+window.addEventListener("resize", syncOrbitPanelLayout);
