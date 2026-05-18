@@ -3,7 +3,7 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// Mobile nav toggle
+// Mobile menu
 var toggle = document.querySelector(".nav__toggle");
 var links = document.querySelector("[data-nav]");
 
@@ -14,7 +14,7 @@ if (toggle && links) {
   });
 }
 
-// Resume modal
+// Resume modal window
 var openResumeBtn = document.getElementById("openResume");
 var resumeModal = document.getElementById("resume-modal");
 var resumeClose = resumeModal && resumeModal.querySelector(".modal__close");
@@ -52,7 +52,7 @@ document.addEventListener("keydown", function (ev) {
   }
 });
 
-// Image lightbox for artifacts gallery
+// Image preview modal
 var imgModal = document.getElementById("img-modal");
 var imgModalImg = imgModal && document.getElementById("img-modal-img");
 var imgModalClose = imgModal && imgModal.querySelector(".img-modal__close");
@@ -76,7 +76,7 @@ function closeImgModal() {
   if (imgModalImg) imgModalImg.src = "";
 }
 
-// Attach click listeners to thumbnails
+// Open image modal when an artifact thumbnail is clicked
 var thumbs = document.querySelectorAll(".artifact-thumb");
 for (var i = 0; i < thumbs.length; i++) {
   (function (btn) {
@@ -102,7 +102,7 @@ document.addEventListener("keydown", function (ev) {
   }
 });
 /* =========================
-   ORBITAL TIMELINE
+   Design process orbit
 ========================= */
 
 var orbitNodes = document.querySelectorAll(".orbit__node");
