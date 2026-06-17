@@ -166,13 +166,44 @@
           </article>
 
           <article class="project">
-            <div class="project__thumb project__thumb--placeholder">
-              <span>Work in progress</span>
-            </div>
+            <a
+              class="project__thumb"
+              href="https://duck-story.netlify.app/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Open duck-story website"
+            >
+              <img
+                src="images/Duck-Story.jpg"
+                alt="Screenshot of the Duck-Story details book page"
+              />
+            </a>
             <div class="project__body">
-              <p class="project__eyebrow">Project 02</p>
-              <h3>Work in progress</h3>
-              <p class="muted">More project details will be added soon.</p>
+              <p class="project__eyebrow">Fullstack / Book Discovery</p>
+              <h3>Duck Story</h3>
+              <p class="muted">
+                Duck Story is a children's book discovery app built for parents.
+                Users can browse books, save titles to a personal reading list,
+                mark books as read, and rate them 1–10 — all connected to a
+                headless CMS with user authentication
+              </p>
+              <div class="project__tags">
+                <span class="chip">HTML</span>
+                <span class="chip">SCSS</span>
+                <span class="chip">JavaScript</span>
+                <span class="chip">Strapi</span>
+                <span class="chip">Axios</span>
+                <span class="chip">GSAP</span>
+                <span class="chip">SQLite</span>
+                <span class="chip">REST API</span>
+              </div>
+              <a
+                class="project__link"
+                href="https://https://duck-story.netlify.app/landing/"
+                target="_blank"
+                rel="noopener"
+                >View live website</a
+              >
             </div>
           </article>
 
@@ -939,15 +970,29 @@
             </div>
           </div>
 
-          <form class="form card" action="#" method="post">
+          <form
+            class="form card"
+            action="https://formspree.io/f/xdavvywb"
+            method="post"
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              value="New Portfolio Contact Message"
+            />
             <label>
               <span>Name</span>
-              <input type="text" name="name" placeholder="Your name" />
+              <input type="text" name="name" placeholder="Your name" required />
             </label>
 
             <label>
               <span>Email</span>
-              <input type="email" name="email" placeholder="your@email.com" />
+              <input
+                type="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+              />
             </label>
 
             <label>
