@@ -52,218 +52,32 @@ document.addEventListener("keydown", function (ev) {
   }
 });
 
-// Image preview modal
-var imgModal = document.getElementById("img-modal");
-var imgModalImg = imgModal && document.getElementById("img-modal-img");
-var imgModalClose = imgModal && imgModal.querySelector(".img-modal__close");
-var imgModalOverlay = imgModal && imgModal.querySelector(".img-modal__overlay");
-
-function openImgModal(src, alt) {
-  if (!imgModal || !imgModalImg) return;
-  imgModalImg.src = src;
-  imgModalImg.alt = alt || "Preview";
-  imgModal.classList.add("is-open");
-  imgModal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
-  if (imgModalClose && imgModalClose.focus) imgModalClose.focus();
-}
-
-function closeImgModal() {
-  if (!imgModal) return;
-  imgModal.classList.remove("is-open");
-  imgModal.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-  if (imgModalImg) imgModalImg.src = "";
-}
-
-// Open image modal when an artifact thumbnail is clicked
-var thumbs = document.querySelectorAll(".artifact-thumb");
-for (var i = 0; i < thumbs.length; i++) {
-  (function (btn) {
-    btn.addEventListener("click", function () {
-      var src = btn.getAttribute("data-img");
-      if (!src) return;
-      openImgModal(
-        src,
-        btn.querySelector("img") && btn.querySelector("img").alt,
-      );
-    });
-  })(thumbs[i]);
-}
-
-if (imgModalClose) imgModalClose.addEventListener("click", closeImgModal);
-if (imgModalOverlay) imgModalOverlay.addEventListener("click", closeImgModal);
-
-document.addEventListener("keydown", function (ev) {
-  var k = ev.key || ev.keyCode;
-  if (k === "Escape" || k === "Esc" || k === 27) {
-    if (imgModal && imgModal.classList.contains("is-open")) closeImgModal();
-    if (orbitOverlay && orbitOverlay.classList.contains("is-open")) closeOrbitPanel();
-  }
-});
-/* =========================
-   Design process orbit
-========================= */
-
-var orbitNodes = document.querySelectorAll(".orbit__node");
-var orbitContents = document.querySelectorAll(".orbit-content");
-var orbitOverlay = document.querySelector(".orbit-info--overlay");
-var orbitClose = orbitOverlay && orbitOverlay.querySelector(".orbit-info__close");
-var orbitWrapper = document.querySelector(".orbit__wrapper--artifact");
-
-function setOrbitPanelPosition(sourceNode) {
-  if (!orbitWrapper || !sourceNode) return;
-
-  var wrapperRect = orbitWrapper.getBoundingClientRect();
-  var nodeRect = sourceNode.getBoundingClientRect();
-  var centerX = nodeRect.left - wrapperRect.left + nodeRect.width / 2;
-  var centerY = nodeRect.top - wrapperRect.top + nodeRect.height / 2;
-
-  orbitWrapper.style.setProperty("--panel-x", centerX + "px");
-  orbitWrapper.style.setProperty("--panel-y", centerY + "px");
-}
-
-var orbitMobileMedia =
+// Respect reduced-motion preferences for the project reel.
+var projectVideos = document.querySelectorAll(".project__thumb--video video");
+var reducedMotion =
   typeof window !== "undefined" && window.matchMedia
-    ? window.matchMedia("(max-width: 640px)")
+    ? window.matchMedia("(prefers-reduced-motion: reduce)")
     : null;
-var orbitOverlayHome = orbitOverlay ? orbitOverlay.parentNode : null;
 
-function isOrbitMobileLayout() {
-  return !!(orbitMobileMedia && orbitMobileMedia.matches);
-}
-
-function restoreOrbitOverlayHome() {
-  if (!orbitOverlay || !orbitOverlayHome) return;
-  if (orbitOverlay.parentNode !== orbitOverlayHome) {
-    orbitOverlayHome.appendChild(orbitOverlay);
-  }
-}
-
-function moveOrbitPanel(sourceNode) {
-  if (!orbitOverlay || !sourceNode) return;
-
-  if (isOrbitMobileLayout()) {
-    sourceNode.insertAdjacentElement("afterend", orbitOverlay);
-    return;
-  }
-
-  restoreOrbitOverlayHome();
-  setOrbitPanelPosition(sourceNode);
-}
-
-function syncOrbitPanelLayout() {
-  if (!orbitOverlay) return;
-
-  var activeNode = null;
-  for (var i = 0; i < orbitNodes.length; i++) {
-    if (orbitNodes[i].classList.contains("is-active")) {
-      activeNode = orbitNodes[i];
-      break;
-    }
-  }
-
-  if (!activeNode) {
-    restoreOrbitOverlayHome();
-    return;
-  }
-
-  moveOrbitPanel(activeNode);
-}
-
-function closeOrbitPanel() {
-  if (!orbitOverlay) return;
-  orbitOverlay.classList.remove("is-open");
-  orbitOverlay.setAttribute("aria-hidden", "true");
-  restoreOrbitOverlayHome();
-
-  for (var i = 0; i < orbitNodes.length; i++) {
-    orbitNodes[i].classList.remove("is-active");
-    orbitNodes[i].setAttribute("aria-expanded", "false");
-  }
-  for (var j = 0; j < orbitContents.length; j++) {
-    orbitContents[j].classList.remove("is-visible");
-  }
-}
-
-function openOrbitPanel(targetId, sourceNode) {
-  if (!orbitOverlay) return;
-
-  for (var i = 0; i < orbitNodes.length; i++) {
-    orbitNodes[i].classList.remove("is-active");
-    orbitNodes[i].setAttribute("aria-expanded", "false");
-  }
-  for (var j = 0; j < orbitContents.length; j++) {
-    orbitContents[j].classList.remove("is-visible");
-  }
-
-  if (sourceNode) {
-    sourceNode.classList.add("is-active");
-    sourceNode.setAttribute("aria-expanded", "true");
-    moveOrbitPanel(sourceNode);
-  }
-
-  var targetContent = document.getElementById(targetId);
-  if (targetContent) {
-    targetContent.classList.add("is-visible");
-    orbitOverlay.classList.add("is-open");
-    orbitOverlay.setAttribute("aria-hidden", "false");
-
-    if (isOrbitMobileLayout() && orbitOverlay.scrollIntoView) {
-      window.requestAnimationFrame(function () {
-        orbitOverlay.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-        });
-      });
-    }
-  }
-}
-
-for (var k = 0; k < orbitNodes.length; k++) {
-  (function (node) {
-    var targetId = node.dataset.orbit;
-    node.setAttribute("aria-expanded", "false");
-    if (targetId) node.setAttribute("aria-controls", targetId);
-
-    node.addEventListener("click", function () {
-      var isSameActive = node.classList.contains("is-active");
-
-      if (isSameActive && orbitOverlay && orbitOverlay.classList.contains("is-open")) {
-        closeOrbitPanel();
-        return;
+function syncProjectVideoMotion() {
+  for (var i = 0; i < projectVideos.length; i++) {
+    if (reducedMotion && reducedMotion.matches) {
+      projectVideos[i].pause();
+    } else {
+      var playPromise = projectVideos[i].play();
+      if (playPromise && playPromise.catch) {
+        playPromise.catch(function () {});
       }
-
-      openOrbitPanel(targetId, node);
-    });
-  })(orbitNodes[k]);
-}
-
-if (orbitClose) {
-  orbitClose.addEventListener("click", closeOrbitPanel);
-}
-
-document.addEventListener("click", function (ev) {
-  if (!orbitOverlay || !orbitOverlay.classList.contains("is-open")) return;
-
-  var clickedNode = ev.target && ev.target.closest
-    ? ev.target.closest(".orbit__node")
-    : null;
-  var clickedOverlay = ev.target && ev.target.closest
-    ? ev.target.closest(".orbit-info--overlay")
-    : null;
-
-  if (!clickedNode && !clickedOverlay) {
-    closeOrbitPanel();
-  }
-});
-
-if (orbitMobileMedia) {
-  if (orbitMobileMedia.addEventListener) {
-    orbitMobileMedia.addEventListener("change", syncOrbitPanelLayout);
-  } else if (orbitMobileMedia.addListener) {
-    orbitMobileMedia.addListener(syncOrbitPanelLayout);
+    }
   }
 }
 
-window.addEventListener("resize", syncOrbitPanelLayout);
+syncProjectVideoMotion();
+
+if (reducedMotion) {
+  if (reducedMotion.addEventListener) {
+    reducedMotion.addEventListener("change", syncProjectVideoMotion);
+  } else if (reducedMotion.addListener) {
+    reducedMotion.addListener(syncProjectVideoMotion);
+  }
+}
